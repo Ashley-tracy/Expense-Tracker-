@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Expense Tracker</h1>
+    <p>Log expenses in any currency and convert them into your home currency.</p>
+  </header>
+
+  <main class="app">
+    <section class="controls">
+      <label>
+        Home currency
+        <select id="home-currency">
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="GBP">GBP</option>
+          <option value="KES">KES</option>
+        </select>
+      </label>
+
+      <label>
+        Filter category
+        <select id="filter-category">
+          <option value="All">All</option>
+          <option value="Food">Food</option>
+          <option value="Transport">Transport</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Bills">Bills</option>
+          <option value="Other">Other</option>
+        </select>
+      </label>
+    </section>
+
+    <section id="status" class="status" role="status" aria-live="polite"></section>
+
+    <form id="expense-form">
+      <label>
+        Description
+        <input id="description" name="description" required maxlength="80" />
+      </label>
+
+      <label>
+        Amount
+        <input id="amount" name="amount" type="number" min="0.01" step="0.01" required />
+      </label>
+
+      <label>
+        Currency
+        <select id="currency" name="currency">
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="GBP">GBP</option>
+          <option value="KES">KES</option>
+          <option value="JPY">JPY</option>
+        </select>
+      </label>
+
+      <label>
+        Category
+        <select id="category" name="category">
+          <option value="Food">Food</option>
+          <option value="Transport">Transport</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Bills">Bills</option>
+          <option value="Other">Other</option>
+        </select>
+      </label>
+
+      <button type="submit">Add expense</button>
+    </form>
+
+    <section class="summary">
+      <h2>Total</h2>
+      <p id="total">-</p>
+    </section>
+
+    <section>
+      <h2>Expenses</h2>
+      <ul id="expense-list"></ul>
+      <p id="empty-message">No expenses yet.</p>
+    </section>
+  </main>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
