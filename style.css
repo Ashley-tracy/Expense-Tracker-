@@ -69,13 +69,17 @@ button:hover {
 
 form {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns:  1fr  1.5fr;
   gap: 4rem;
   align-items: end;
   background: white;
   padding: 1rem;
   border-radius: 12px;
+  @media (max-width :768px) {
+    grid-template-columns: 1fr;
+  }
 }
+
 
 form button {
   min-height: 42px;
