@@ -70,7 +70,7 @@ button:hover {
 form {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1rem;
+  gap: 4rem;
   align-items: end;
   background: white;
   padding: 1rem;
