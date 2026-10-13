@@ -21,8 +21,8 @@ https://your-username.github.io/Expense-Tracker-/
 - **HTML, CSS, vanilla JavaScript**
 - **ES Modules** — code split across `api.js`, `state.js`, `utils.js`, `ui.js`, `main.js`
 - **REST API** — [https://open.er-api.com/v6/latest/USD](https://open.er-api.com/v6/latest/USD) (free, no API key required)
-- **Jest** for unit tests
-- **ESLint** for static analysis
+- **Jest** -for unit tests
+- **ESLint** -for static analysis
 
 
 ## How to run Locally including test and lint
