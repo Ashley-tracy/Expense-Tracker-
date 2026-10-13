@@ -25,21 +25,23 @@ https://your-username.github.io/Expense-Tracker-/
 - **ESLint** -for static analysis
 
 
-## How to run Locally including test and lint
+### How to run Locally including test and lint
 
-Clone the repo and install dependencies:
+1. Clone the repo and install dependencies:
 
 ```bash
 git clone https://github.com/your-username/Expense-Tracker-.git
 cd Expense-Tracker-
 npm install
+```
 
-##What I'd Improve With More Time
-- Add lightweight charts (using libraries like Chart.js) to display visual breakdowns of spending by category and currency over time.
-- Integrate localStorage or IndexedDB so users don't lose their logged expenses upon refreshing the browser.
-- Allow users to define custom spending categories with personalized tags and color coding.
-- Cache the latest fetched conversion rates so users traveling in low-connectivity areas can continue logging expenses offline.
-- Allow users to pick the actual date of purchase and convert amounts based on the historical exchange rate on that specific day rather than today's rate.
+## What I'd improve with more time
+
+* ** Add lightweight charts using libraries like Chart.js to display visual breakdowns of spending by category and currency over time.
+* ** Integrate localStorage or IndexedDB so users don't lose their logged expenses upon refreshing the browser.
+** Allow users to define custom spending categories with personalized tags and color coding.
+** Cache the latest fetched conversion rates so users traveling in low-connectivity areas can continue logging expenses offline.
+** Allow users to pick the actual date of purchase and convert amounts based on the historical exchange rate on that specific day rather than today's rate.
 
 
 
