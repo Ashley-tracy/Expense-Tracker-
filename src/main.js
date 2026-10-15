@@ -15,6 +15,34 @@ import {
 } from "./state.js";
 import { initUI, render } from "./ui.js";
 
+function getTodayString() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const day = String(today.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+function setupDateInputRestriction() {
+  const dateInput = document.getElementById("expense-date");
+  if (dateInput) {
+    const today = getTodayString();
+    dateInput.max = today;
+    if (!dateInput.value) {
+      dateInput.value = today;
+    }
+  }
+}
+
+
+function validateExpenseDate(dateString) {
+  const today = getTodayString();
+  if (!dateString || dateString > today) {
+    return today;
+  }
+  return dateString;
+}
+
 async function loadRates(homeCurrency) {
   setLoading(true);
   setError(null);
