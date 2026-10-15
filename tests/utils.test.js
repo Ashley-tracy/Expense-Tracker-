@@ -96,3 +96,39 @@ describe("formatCurrency", () => {
     expect(formatCurrency(10, "USD")).toMatch(/\$10/);
   });
 });
+
+describe("validateExpenseDate", () => {
+  const today = getTodayString();
+
+  test("allows past dates", () => {
+    expect(validateExpenseDate("2024-05-10")).toBe("2024-05-10");
+  });
+
+  test("allows today's date", () => {
+    expect(validateExpenseDate(today)).toBe(today);
+  });
+
+  test("clamps future dates to today's date", () => {
+    expect(validateExpenseDate("2099-12-31")).toBe(today);
+  });
+
+  test("defaults missing or empty date to today", () => {
+    expect(validateExpenseDate("")).toBe(today);
+    expect(validateExpenseDate(null)).toBe(today);
+  });
+});
+
+describe("formatDate", () => {
+  test("returns an em dash for null or empty input", () => {
+    expect(formatDate(null)).toBe("—");
+    expect(formatDate("")).toBe("—");
+  });
+
+  test("returns an em dash for invalid date strings", () => {
+    expect(formatDate("not-a-date")).toBe("—");
+  });
+
+  test("formats a valid YYYY-MM-DD string into readable date format", () => {
+    expect(formatDate("2026-10-13")).toBe("Oct 13, 2026");
+  });
+});
