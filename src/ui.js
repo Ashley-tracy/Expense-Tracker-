@@ -8,6 +8,7 @@ const els = {
   amount: document.querySelector("#amount"),
   currency: document.querySelector("#currency"),
   category: document.querySelector("#category"),
+  date: document.querySelector("#expense-date"),
   homeCurrency: document.querySelector("#home-currency"),
   filterCategory: document.querySelector("#filter-category"),
   expenseList: document.querySelector("#expense-list"),
@@ -15,6 +16,14 @@ const els = {
   emptyMessage: document.querySelector("#empty-message"),
   status: document.querySelector("#status"),
 };
+
+function getTodayString() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const day = String(today.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
 
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, (char) => {
@@ -36,19 +45,31 @@ export function initUI({
   onHomeCurrencyChange,
   onFilterChange,
 }) {
+  if (els.date) {
+    const today = getTodayString();
+    els.date.max = today;
+    if (!els.date.value) els.date.value = today;
+  }
+
   els.form.addEventListener("submit", (event) => {
     event.preventDefault();
 
     const formData = new FormData(els.form);
+    const today = getTodayString();
+    const rawDate = formData.get("date");
+    const date = !rawDate || rawDate > today ? today : rawDate;
 
     onAddExpense({
       description: formData.get("description").trim(),
       amount: Number(formData.get("amount")),
       currency: formData.get("currency"),
       category: formData.get("category"),
+      date,
     });
 
     els.form.reset();
+
+    if (els.date) els.date.value = getTodayString();
     els.description.focus();
   });
 
@@ -104,6 +125,7 @@ export function render(state, visibleExpenses, total) {
             <span class="expense-meta">
               ${formatCurrency(expense.amount, expense.currency)}
               · ${escapeHtml(expense.category)}
+              · ${escapeHtml(expense.date || "")}
             </span>
           </div>
 
